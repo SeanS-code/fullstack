@@ -5,24 +5,26 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
+    gap: 25px;
 }
 
 button {
-    margin: 20px 0px;
+    padding: 15px 25px;
+    border: 1px solid black;
 }
 
 .container {
     width: 960px;
     height: 960px;
-    
+
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-
-    border: 1px solid black;
 }
 
-.container div {
-    width: 60px;
-    height: 60px;
+.buttons {
+    margin-top: 15px;
+    display: flex;
+    gap: 20px;
 }
