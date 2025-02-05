@@ -24,7 +24,7 @@ function createGrid(size) {
     let boxList = document.querySelectorAll('.hover')
     boxList.forEach(boxes => boxes.addEventListener('mouseover', (event) => {
         event.target.style.backgroundColor = "rgba(0, 0, 0, " + shade +")"
-        shade[boxes] += .5
+        shade += .05
     }))
 }
 
@@ -45,10 +45,8 @@ const display = document.querySelector('.container')
 const changeGrid = document.querySelector('.sizing')
 const clear = document.querySelector('.clear')
 
-let shade = []
+let shade = .2
 let gridsize = 16
-
-createShadeArr(gridsize)
 createGrid(gridsize)
 
 clear.addEventListener("click", clearCheck)
