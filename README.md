@@ -5,7 +5,6 @@
 <summary>HTML/CSS</summary>
 </details>
 
-
 <details>
 <summary>Javascript</summary>
 </details>
