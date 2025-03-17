@@ -24,6 +24,10 @@ button[disabled] {
     color: #292929;
 }
 
+.operators button:enabled:focus {
+    border: 1px solid yellow
+}
+
 .container {
     display: flex;
     flex-direction: column;

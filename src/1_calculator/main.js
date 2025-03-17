@@ -1,5 +1,7 @@
 // Variables
-const numerics = ['0123456789']
+digitArray = []
+opArray = []
+numArray = []
 
 // Math Functions
 function add(n, m) {
@@ -20,46 +22,64 @@ function div(n, m) {
 
 function operate(n, m, operator) {
     switch (operator) {
-        case "add":
+        case "+":
             return add(n,m)
-        case "sub":
+        case "−":
             return sub(n,m)
-        case "mult":
+        case "×":
             return mult(n,m)
-        case "div":
+        case "÷":
             return div(n,m)
     }
 }
 
 // Button Functions
 
-function clear(display) {
-    while (display.firstChild) {
-        display.removeChild(display.lastChild);
-    }
+function clear(display, display_prev) {
+    display.textContent = ""
+    display_prev.textContent = ""
+
+    numArray = []
+    opArray = []
+    digitArray = []
 }
 function del(display) {
     display.removeChild(display.lastChild);
+
+    digitArray.pop()
 }
 
-// Helper Functions
-function process(digits) {
-    subs = digits.split(/[+]/)
-
-    enm = parseInt(subs[0])
-    for (let i = 0; i < subs.length; i++) {
-        enm = operate(enm, parseInt(subs[i+1]), "add")
+function process() {
+    let res = 0
+    for (let i = 0; i < numArray.length-1; i++) {
+        res += operate(numArray[i], numArray[i+1], opArray[i])
     }
 
-    return enm
+    numArray = []
+    opArray = []
+    digitArray = []
+    
+    return res
 }
 
 // DOM Commands
 
 const buttons = document.querySelectorAll('button');
+const operators = document.querySelectorAll('.operator')
+
 const frame = document.querySelector('.container');
 const display = document.querySelector('.display');
 const prev = document.querySelector('.previous');
+
+
+operators.forEach((operator) => {
+    operator.addEventListener('click', () => {
+        numArray.push(Number(digitArray.filter(l => l.match(/[0-9]/)).join('')))
+        opArray.push(operator.textContent)
+
+        digitArray = []
+    })
+})
 
 buttons.forEach((btn) => {
     btn.addEventListener('click', () => {
@@ -67,66 +87,23 @@ buttons.forEach((btn) => {
 
         switch (pressed) {
             case "Clear":
-                return clear(display)
+                clear(display, prev)
+                break
             case "Del":
                 return del(display)
             case "=":
+
                 if (display.textContent == "")
                     break
-                result = process(display.textContent)
-                clear(display)
-                clear(prev)
+                result = process()
+
+                clear(display, prev)
                 prev.append(result)
+
                 return console.log(result)
             default:
+                digitArray.push(pressed)
                 display.append(pressed)
         }
     })
 })
-
-/* Old Timey Calculator Logic aka. First Attempt
-
-case "+":
-                if (display.textContent == "")
-                    break
-                digits = parseInt(display.textContent)
-                result = operate(result, digits, "add")
-                clear(display)
-                clear(prev)
-                prev.append(result)
-                break
-            case "-":
-                if (display.textContent == "")
-                    break
-                digits = parseInt(display.textContent)
-                result = operate(result, digits, "sub")
-                clear(display)
-                clear(prev)
-                prev.append(result)
-                break
-            case "×":
-                if (display.textContent == "")
-                    break
-                if (result == 0) {
-                    result = parseInt(display.textContent)
-                    clear(display)
-                    clear(prev)
-                    prev.append(result)
-                    break
-                }
-                digits = parseInt(display.textContent)
-                result = operate(result, digits, "mult")
-                clear(display)
-                clear(prev)
-                prev.append(result)
-                break
-            case "÷":
-                if (display.textContent == "")
-                    break
-                digits = parseInt(display.textContent)
-                result = operate(result, digits, "div")
-                clear(display)
-                clear(prev)
-                prev.append(result)
-                break
-*/
