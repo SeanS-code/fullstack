@@ -4,21 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign-Up Form</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="image">
+    <main>
+        <div class="side-container">
+            <img class="side-image" src="./resources/sideimage.jpg"/>
+            <div class="side-logo">
+                <img src="./resources/odin-lined.png">
+                <h2>Odin</h2>
+            </div>
+            <p>Photo by Halie West on <u>Unsplash</u></p>
+        </div>
+        <div>
+            <h3>
+                This is not a real online serive! You know you need something like this in your life to help you
+                realize your deepest dreams. Sign up <em>now</em> to get started.
 
-    </div>
-    <div>
-        <h3>
-            This is not a real online serive! You know you need something like this in your life to help you
-            realize your deepest dreams. Sign up <em>now</em> to get started.
+                You <em>know</em> you want to.
+            </h3>
+            <form action="#" method="post">
+                <h2>Let's Do This</h2>
+                <div>
+                    <label for="first_name">first name</label>
+                    <input name="first_name">
+                    
+                    <label for="last_name">last name</label>
+                    <input name="last_name">
 
-            You <em>know</em> you want to.
-        </h3>
-        <form>
-            <label>Let's Do This</label>
-        </form>
-    </div>
+                    <label for="email">email</label>
+                    <input name="email">
+
+                    <label for="phone_number">phone number</label>
+                    <input name="phone_number">
+
+                    <label for="pwd">password</label>
+                    <input name="pwd">
+
+                    <label for="con_pwd">confirm password</label>
+                    <input name="con_pwd">
+                </div>
+
+                <div>
+                    <button>Create Account</button>
+                    <p>Already have an account? <a href="#">Log In</a></p>
+                </div>
+            </form>
+        </div>
+    </main>
 </body>
 </html>
