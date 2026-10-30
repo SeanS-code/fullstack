@@ -30,6 +30,8 @@ function operate(n, m, operator) {
             return mult(n,m)
         case "÷":
             return div(n,m)
+        default:
+            return null
     }
 }
 

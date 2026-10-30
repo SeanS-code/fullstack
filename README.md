@@ -3,6 +3,7 @@
 ## Front-End Development
 <details>
 <summary>Odin Project</summary>
+<br>
 
 [Web Page](frontend/0_webpage/)
 
@@ -12,11 +13,14 @@
 
 [Calculator](frontend/1_calculator/)
 
+[Sign-Up Form](frontend/2_signupform/)
+
 </details>
 
 ## Back-End Development
 <details>
 <summary>Simple Projects</summary>
+<br>
 
 [Task Tracker](backend/task_tracker/)
 
